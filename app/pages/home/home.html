@@ -1,0 +1,32 @@
+<ion-navbar github *navbar>
+  <!--Title of Application Displayed in Status Bar-->
+  <ion-title>
+    GitHub Repo Search
+  </ion-title>
+</ion-navbar>
+
+<ion-content class="home">
+  <ion-list inset>
+      <ion-item>
+          <!--Search for Github User by Username-->
+          <ion-label class="username"> Username</ion-label>
+          <ion-input [(ngModel)]="username" type="text"></ion-input>
+      </ion-item>
+  </ion-list>
+  <!--Search Button-->
+  <div padding>
+      <button class="search" block (click)="getRepos()">Search</button>
+  </div>
+  <!--Found Repo Results-->
+  <!--Angular 2 Repeator for all repos found.-->
+  <ion-card *ngFor="#repo of foundRepos" (click)="goToDetails(repo)">
+      <!--Repo Name-->
+      <ion-card-header>
+          {{ repo.name }}
+      </ion-card-header>
+      <!--Repo's Description-->
+      <ion-card-content detail-push>
+          {{ repo.description }}
+      </ion-card-content>
+  </ion-card>
+</ion-content>
